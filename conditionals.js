@@ -10,6 +10,10 @@ if (temp < 0) {
   console.log("It's warmer than 16 deg");
 }
 
+if (temp < -40 || temp > 40) {
+  console.log("Temp is extreme");
+}
+
 if (raining) {
   console.log("Don't forget your waterproof hair");
 } else {
