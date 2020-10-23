@@ -5,17 +5,19 @@ const conditionalSum = function(values, condition) {
   // Initialize 'sum' to 0: function returns 0 if 'values' array is empty
   let sum = 0;
 
-  values.forEach(function (num) {
-    if (condition == "even") {
+  if (condition == "even") {
+    values.forEach(function (num) {
       if (num % 2 === 0) {
         sum += num;
       }
-    } else if (condition == "odd") {
+    })
+   } else if (condition == "odd") {
+    values.forEach(function (num) {
       if (num % 2 !== 0) {
         sum += num;
       }
-    }
-  })
+    })
+  }
 
   return sum;
 };
