@@ -8,24 +8,36 @@
  * Return value is of the form [innerArray index, mainArray index], or false if no match is found */
 
 const whereCanIPark = function (spots, vehicle) {
-  let x = "";
-  let y = "";
-  
-  for (let y = 0; y < spots.length; y++) {
-    for (let x = 0; x < spots[y].length; x++) {
-      if (vehicle.toLowerCase() == "regular" && spots[y][x] === "R") {
-        return [x, y];
-      } else if (vehicle.toLowerCase() == "small" && (spots[y][x] === "R" || spots[y][x] === "S")) {
-        return [x, y];
-      } else if (vehicle.toLowerCase() == "motorcycle" && (spots[y][x] === "R" || spots[y][x] === "S" || spots[y][x] === "M")) {
-        return [x, y];
-      } else {
-        continue;
+  // Create a blank array variable
+  let type = [];
+
+  // Fill in the 'type' array with letter codes corresponding to which spots that vehicle can occupy
+  switch (vehicle) {
+    case 'regular':
+      type = ['R']
+      break;
+    case 'small':
+      type = ['R','S']
+      break;
+    case 'motorcycle':
+      type = ['R','S','M']
+      break;
+  }
+
+  // For each column and row check if its spot matches one of the types that suit our vehicle. If so, return coordinates of that spot.
+  for (let y in spots) {
+    for (let x in spots[y]) {
+      for (let i in type) {
+        if (spots[y][x] == type[i]) {
+          return [x, y];
+        }
       }
     }
   }
-
+  
+  // If no spots are found that suit our vehicle type, return 'false'
   return false;
+
 };
 
 
