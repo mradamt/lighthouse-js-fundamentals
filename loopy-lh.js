@@ -7,16 +7,14 @@
 
 const loopyLighthouse = function (range, multiples, words) {  
   for (let n = range[0]; n <= range[1]; n++) {
-    if (n % multiples[0] === 0 && n % multiples[1] === 0) {
-      console.log(words[0] + words[1]);
-    } else if (n % multiples[0] === 0) {
-      console.log(words[0]);
-    } else if (n % multiples[1] === 0) {
-      console.log(words[1]);
-    } else {
-      console.log(n);
+    let out = ""
+    for (let i = 0; i < 2; i++) {
+      if (n % multiples[i] === 0) {
+        out += words[i];
+      }
     }
+    console.log(out === "" ? n : out)
   }
 }
 
-loopyLighthouse([15, 30], [2, 5], ["Batty", "Beacon"])
+loopyLighthouse([1, 10], [2, 5], ["Foo", "Bar"])
