@@ -1,24 +1,18 @@
+/* Given arguments
+ * range = [a, b] 
+ * multiples = [c, d]
+ * words = ["word1", "word2"]
+ * loopyLighthouse logs all numbers between a and b, but replacing multiples of c with "word1", 
+ * multiples of d with "word2", and multiples of c and d with "word1word2" */
 
 const loopyLighthouse = function (range, multiples, words) {  
-  // Parse out variables from function arguments
-  const start = range[0];
-  const end = range[1];
-
-  const multi1 = multiples[0];
-  const multi2 = multiples[1];
-
-  const replace1 = words[0];
-  const replace2 = words[1];
-  const replace3 = replace1 + replace2;
-
-  // Execute loops using variable names, to save fresh calculation every loop
-  for (let n = start; n <= end; n++) {
-    if (n % multi1 === 0 && n % multi2 === 0) {
-      console.log(replace3);
-    } else if (n % multi1 === 0) {
-      console.log(replace1);
-    } else if (n % multi2 === 0) {
-      console.log(replace2);
+  for (let n = range[0]; n <= range[1]; n++) {
+    if (n % multiples[0] === 0 && n % multiples[1] === 0) {
+      console.log(words[0] + words[1]);
+    } else if (n % multiples[0] === 0) {
+      console.log(words[0]);
+    } else if (n % multiples[1] === 0) {
+      console.log(words[1]);
     } else {
       console.log(n);
     }
